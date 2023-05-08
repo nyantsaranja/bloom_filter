@@ -1,11 +1,8 @@
 package method;
 
 public class SimpleHash implements HashFunction {
-    private final int p;
+    private final int p = 1002;
 
-    public SimpleHash(int p) {
-        this.p = p;
-    }
 
     @Override
     public int hash(String word) {
