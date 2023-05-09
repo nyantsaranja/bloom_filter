@@ -21,7 +21,7 @@ public class Main {
     public static void main(String[] args) {
         // Création des fonctions de hachage
         HashFunction[] hashFunctions = {
-                new RandomHashFunction(),
+                new StringHashFunction(),
                 new FNVHash(),
                 new MurmurHash()
         };

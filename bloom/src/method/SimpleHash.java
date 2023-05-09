@@ -1,7 +1,7 @@
 package method;
 
 public class SimpleHash implements HashFunction {
-    private final int p = 1002;
+    private final int p = 465765;
 
 
     @Override
