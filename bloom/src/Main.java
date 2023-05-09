@@ -21,13 +21,13 @@ public class Main {
     public static void main(String[] args) {
         // Création des fonctions de hachage
         HashFunction[] hashFunctions = {
-                new SimpleHash(),
+                new RandomHashFunction(),
                 new FNVHash(),
                 new MurmurHash()
         };
 
         // Création du filtre de Bloom
-        int filterSize = 1000;
+        int filterSize = 1000000;
 //        BloomFilterBoolean bloomFilter = new BloomFilterBoolean(filterSize, hashFunctions);
         BloomFilter bloomFilter = new BloomFilter(filterSize, hashFunctions);
 

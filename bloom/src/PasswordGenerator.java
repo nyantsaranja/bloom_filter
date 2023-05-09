@@ -21,7 +21,7 @@ public class PasswordGenerator {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         Set<String> passwords = new HashSet<>();
 
-        while (passwords.size() < 100000) {
+        while (passwords.size() < 1000000) {
             String password = generatePassword();
             password= SHA256.hash(password);
             passwords.add(password);
