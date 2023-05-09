@@ -2,6 +2,8 @@ import bloom.BloomFilter;
 import bloom.BloomFilterBoolean;
 import method.*;
 
+import java.util.List;
+
 public class Main {
 
 //    public static void main(String[] args) {
@@ -25,25 +27,27 @@ public class Main {
         };
 
         // Création du filtre de Bloom
-        int filterSize = 1000000000;
+        int filterSize = 1000;
 //        BloomFilterBoolean bloomFilter = new BloomFilterBoolean(filterSize, hashFunctions);
         BloomFilter bloomFilter = new BloomFilter(filterSize, hashFunctions);
 
         // Ajout de mots au filtre de Bloom
-        String[] wordsToAdd = {"hello", "world", "foo", "bar", "baz", "Qux"};
-        for (String word : wordsToAdd) {
+        List<String> passwordsToAdd=PasswordGenerator.readPasswordsFromFile("passwords.txt");
+        for (String word : passwordsToAdd) {
             bloomFilter.add(word);
         }
 
         // Test de la présence de mots dans le filtre de Bloom
-        String[] wordsToTest = {"hello", "world", "foo", "bar", "baz", "qux", "quux"};
-        for (String word : wordsToTest) {
+        List<String> passwordsToTest=PasswordGenerator.readPasswordsFromFile("passwords2.txt");
+        int positive = 0;
+        for (String word : passwordsToTest) {
             boolean isPresent = bloomFilter.contains(word);
             if (isPresent) {
-                System.out.println(word + " is probably in the filter.");
-            } else {
-                System.out.println(word + " is definitely not in the filter.");
+                positive ++;
             }
         }
+        System.out.println("Nombre de mots présents : " + positive + "/" + passwordsToTest.size());
+        System.out.println("False positive rate: " + bloomFilter.getFalsePositiveRate(passwordsToAdd.size()));
+//        System.out.println("Nombre de vrais positifs:" + Utils.countEqualsElements(passwordsToAdd,passwordsToTest));
     }
 }
