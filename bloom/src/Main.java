@@ -21,9 +21,9 @@ public class Main {
     public static void main(String[] args) {
         // Création des fonctions de hachage
         HashFunction[] hashFunctions = {
-                new IntHashFunction(),
-                new FNVHash(),
-                new MurmurHash()
+                new MD5Hash(),
+                new SHA1(),
+                new Blake2Hash()
         };
 
         // Création du filtre de Bloom
